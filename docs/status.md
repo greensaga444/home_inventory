@@ -13,15 +13,15 @@ See the resolved project file for Project Name, Repository, and Tech Stack.
 
 ## Current Work Item
 
-Work Item Name: Foundation and Data Model
+Work Item Name: TBD
 
-Description: App boots to shell and can persist core asset entities in local SQLite with migrations working.
+Description: TBD
 
 ---
 
 ## Track
 
-FULL
+LIGHT
 
 Tracks:
 
@@ -40,7 +40,7 @@ Optional check (only if unsure): use FULL when any of these is true:
 
 ## Current Stage
 
-VERIFICATION
+INIT
 
 Available Stages (depends on Track):
 
@@ -217,34 +217,34 @@ Delivery done definition: delivery updates are committed and landed per policy (
 
 ### INIT
 
-- [x] Branch Created
-- [x] Work Item Name + Description
-- [x] Tech Stack Confirmed
-- [x] Scope + Definition of Done Confirmed
+- [ ] Branch Created
+- [ ] Work Item Name + Description
+- [ ] Tech Stack Confirmed
+- [ ] Scope + Definition of Done Confirmed
 
 ### PLAN
 
-- [x] Goal + MVP Defined
-- [x] Scope + Acceptance Criteria
-- [x] Task Breakdown Ready
+- [ ] Goal + MVP Defined
+- [ ] Scope + Acceptance Criteria
+- [ ] Task Breakdown Ready
 
 ### IMPLEMENTATION
 
-- [x] Code Implemented
-- [x] Tests Added/Updated
+- [ ] Code Implemented
+- [ ] Tests Added/Updated
 - [ ] Changes Committed
 
 ### VERIFICATION
 
-- [x] Work Item Tested
-- [x] Definition of Done Verified
-- [x] Format / Lint Checked (if the project defines a formatter or linter)
-- [x] CI Passed — run locally if a CI config exists (required if project.md Delivery Policy sets CI Required = yes)
+- [ ] Work Item Tested
+- [ ] Definition of Done Verified
+- [ ] Format / Lint Checked (if the project defines a formatter or linter)
+- [ ] CI Passed — run locally if a CI config exists (required if project.md Delivery Policy sets CI Required = yes)
 
 ### DELIVERY
 
-- [x] project.md progress updated (Roadmap/Milestones)
-- [x] Docs/README updated
+- [ ] project.md progress updated (Roadmap/Milestones)
+- [ ] Docs/README updated
 - [ ] Delivery commit + push completed
 - [ ] PR opened/updated (if required)
 
@@ -252,9 +252,7 @@ Delivery done definition: delivery updates are committed and landed per policy (
 
 ## Current Task
 
-Completed AC-FR-001 first slice with TDD: Red failure captured, then minimal implementation to Green.
-Added InitialAssetSchema EF Core migration and WinUI app shell bootstrap with startup DB migration.
-Verification checks passed: build, tests, and dotnet format; no CI workflow config exists in repo.
+TBD
 
 > Keep this to 3-4 lines. Detail belongs in `<workflow-dir>/workitems/<name>.md` (`docs/` in target projects and this template repo), not here.
 
@@ -262,7 +260,7 @@ Verification checks passed: build, tests, and dotnet format; no CI workflow conf
 
 ## Next Action
 
-Prepare and run delivery commit + push for item-1 updates (PR not required by policy).
+TBD
 
 ---
 

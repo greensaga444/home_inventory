@@ -1,0 +1,19 @@
+# Top-level build artifacts
+build/*
+
+# Legacy per-project output folders
+bin/
+obj/
+
+# Visual Studio / VS Code / Rider local files
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# OS files
+Thumbs.db
+.DS_Store
