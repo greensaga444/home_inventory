@@ -6,7 +6,7 @@
 
 ## Init Status
 
-Status: TEMPLATE
+Status: DEFINED
 
 > TEMPLATE = not yet defined; DEFINED = initialization complete.
 > Set to DEFINED only after Final Target, Architecture, and Roadmap are filled in.
@@ -16,24 +16,24 @@ Status: TEMPLATE
 
 ## Project
 
-Project Name: TBD
+Project Name: HomeVault
 
-Repository: TBD  (optional — leave empty for local-only; if using GitHub, create an empty repo and `git clone` before copying this template in)
+Repository: home_inventory (local)
 
-Owner: TBD
+Owner: Davis Chen
 
-Project Type: TBD  (e.g. Web App / Desktop App (Windows/macOS/Linux) / Mobile App (Android/iOS) / CLI Tool / Library/SDK / Backend Service / Embedded)
+Project Type: Desktop App (Windows)
 
-Target Platforms: TBD
+Target Platforms: Windows 10 / Windows 11
 
 Tech Stack:
 
-- Language(s): TBD
-- Framework / UI: TBD
-- Data / Storage: TBD
-- Backend / Services: TBD
-- Build / Packaging: TBD
-- Infrastructure / Distribution: TBD  (optional — CI/CD only if publishing to GitHub or similar)
+- Language(s): C#, XAML
+- Framework / UI: WinUI 3, MVVM (CommunityToolkit.Mvvm)
+- Data / Storage: SQLite, Entity Framework Core
+- Backend / Services: Local-only application services (offline-first)
+- Build / Packaging: .NET 9 SDK, MSIX (release packaging target)
+- Infrastructure / Distribution: Local development initially; optional GitHub CI/CD later
 
 ---
 
@@ -41,10 +41,10 @@ Tech Stack:
 
 > Decided once, after this file is defined. Governs how work branches land.
 
-- Main Branch Protected: TBD  (yes / no)
+- Main Branch Protected: no
 - Pull Request Required: same as Main Branch Protected
 - CI Required: same as Pull Request Required (must pass before merge)
-- Merge Method: TBD  (e.g. squash / merge / rebase)
+- Merge Method: squash
 - One PR per Branch: yes  (if a PR already exists for the branch, update it)
 
 If Main Branch Protected is **no** (therefore Pull Request Required is **no**) (local-only), delivery may push directly to `main` and CI is optional.
@@ -98,19 +98,28 @@ docs/
 
 Vision:
 
-TBD
+HomeVault is an offline-first Windows desktop app that helps users keep a complete, trustworthy household asset catalog with warranty and maintenance context in one place.
 
 Problem Statement:
 
-TBD
+Household asset records are fragmented across paper documents, email, and multiple apps, making it hard to track ownership, warranty status, maintenance history, and insurance-relevant evidence.
 
 Success Definition (Done means):
 
-- TBD
+- Users can create, edit, search, and organize assets quickly.
+- Warranty and maintenance workflows are usable end-to-end.
+- Backup and restore protect local data reliably.
+- The app is fully usable offline and supports en and zh-TW.
+- MVP acceptance criteria in the PRD are satisfied.
 
 Out of Scope:
 
-- TBD
+- Cloud synchronization
+- Mobile applications
+- Multi-user collaboration
+- Online authentication
+- E-commerce or insurance platform integrations
+- AI recognition and smart-home hardware integrations
 
 ---
 
@@ -118,27 +127,36 @@ Out of Scope:
 
 High-Level Overview:
 
-TBD
+HomeVault is a Windows desktop app built with WinUI 3 and MVVM, backed by a local SQLite database through Entity Framework Core. The app is organized into feature modules (Dashboard, Inventory, Warranty, Maintenance, Reports, Settings) with offline-first behavior and bilingual UI resources.
 
 Components:
 
 | Component | Responsibility | Tech |
 | --- | --- | --- |
-| TBD | TBD | TBD |
+| Presentation Layer | Render screens, user interactions, navigation, localization switching | WinUI 3, XAML |
+| ViewModel Layer | UI state, commands, validation, orchestration | CommunityToolkit.Mvvm |
+| Application Services | Business logic for assets, warranties, maintenance, backup/restore, reporting | .NET 9 |
+| Data Access Layer | Persistence, transactions, migrations, query performance | EF Core |
+| Local Storage | Relational data and attachments metadata | SQLite |
+| File Storage/IO | Photos, receipts, backup files, import/export files | Windows file system APIs |
 
 Data Flow:
 
-TBD
+User actions in WinUI views trigger ViewModel commands, which call application services. Services execute validation and business rules, then persist or query data through EF Core against SQLite. For attachments and backups, services coordinate file-system IO and store file references in the database. Dashboard and reports aggregate query outputs for UI display.
 
 Key Decisions:
 
-- TBD
+- Offline-first architecture with no cloud dependency in MVP.
+- MVVM as the mandatory UI architecture pattern.
+- SQLite as the single local source of truth.
+- Bilingual localization (en, zh-TW) across all user-facing text.
+- Backup/restore built into MVP to mitigate local-device risk.
 
 Constraints / Non-Functional Requirements:
 
-- Performance: TBD
-- Security: TBD
-- Scalability: TBD
+- Performance: startup under 3 seconds; search under 500 ms at 10,000 assets.
+- Security: local-user-only data access permissions and backup integrity checks.
+- Scalability: support 100,000 assets, 500,000 maintenance records, and large attachment datasets.
 
 ---
 
@@ -157,9 +175,14 @@ Constraints / Non-Functional Requirements:
 
 | # | Work Item | Definition of Done | Priority | Track | Depends On | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | TBD | TBD | TBD | FULL | - | TODO |
-| 2 | TBD | TBD | TBD | LIGHT | 1 | TODO |
-| 3 | TBD | TBD | TBD | LIGHT | - | TODO |
+| 1 | Foundation and Data Model | App boots to shell and can persist core asset entities in local SQLite with migrations working. | High | FULL | - | TODO |
+| 2 | Inventory CRUD and Organization | Users can create/edit/delete/archive assets and organize them by category and location. | High | FULL | 1 | TODO |
+| 3 | Media and Purchase Metadata | Users can add photos, receipts, serial numbers, and purchase data to asset records. | High | LIGHT | 2 | TODO |
+| 4 | Warranty and Maintenance Workflows | Users can manage warranty expirations and schedule/complete maintenance tasks. | High | FULL | 2 | TODO |
+| 5 | Search, Filters, and Dashboard | Users can search/filter assets and view accurate dashboard summary statistics. | High | LIGHT | 2 | TODO |
+| 6 | Data Portability and Safety | Users can import/export inventory and complete backup/restore without data loss. | High | FULL | 1 | TODO |
+| 7 | Reports and Localization | Inventory reports generate successfully and all supported screens switch cleanly between en and zh-TW. | Medium | LIGHT | 5 | TODO |
+| 8 | Quality Hardening for MVP Gate | MVP release criteria pass for performance, reliability, accessibility, and automated quality checks. | High | FULL | 4, 5, 6, 7 | TODO |
 
 Definition of Done: one line describing a distinct user-visible outcome; no two rows should share it.
 Track values: FULL (full pipeline) / LIGHT (skip PLAN)
@@ -171,9 +194,9 @@ Status values: TODO / IN PROGRESS / DONE / BLOCKED
 
 > Defined here on `init` (from the PRD/Final Target). Each finished milestone triggers a README refresh.
 
-- [ ] M1: TBD
-- [ ] M2: TBD
-- [ ] M3: TBD
+- [ ] M1: Core Inventory MVP (Items 1-3 complete)
+- [ ] M2: Ownership Lifecycle MVP (Items 4-6 complete)
+- [ ] M3: Release-Ready MVP (Items 7-8 complete)
 
 ---
 
