@@ -175,7 +175,7 @@ Constraints / Non-Functional Requirements:
 
 | # | Work Item | Definition of Done | Priority | Track | Depends On | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | Foundation and Data Model | App boots to shell and can persist core asset entities in local SQLite with migrations working. | High | FULL | - | TODO |
+| 1 | Foundation and Data Model | App boots to shell and can persist core asset entities in local SQLite with migrations working. | High | FULL | - | DONE |
 | 2 | Inventory CRUD and Organization | Users can create/edit/delete/archive assets and organize them by category and location. | High | FULL | 1 | TODO |
 | 3 | Media and Purchase Metadata | Users can add photos, receipts, serial numbers, and purchase data to asset records. | High | LIGHT | 2 | TODO |
 | 4 | Warranty and Maintenance Workflows | Users can manage warranty expirations and schedule/complete maintenance tasks. | High | FULL | 2 | TODO |

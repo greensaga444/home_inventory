@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "HomeVault.App (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "HomeVault.App (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
